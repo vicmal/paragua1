@@ -56,7 +56,21 @@ body{background:var(--paper);color:var(--ink);font-family:var(--fb);overflow:hid
 .card{position:absolute;z-index:3;opacity:0;transform:translateY(50px) scale(.985);pointer-events:none;
   transition:opacity .5s ease,transform .5s ease;
   background:var(--card);border:1px solid var(--line);border-radius:16px;
-  padding:26px 30px;box-shadow:0 24px 55px rgba(18,54,42,.16),inset 5px 0 0 0 var(--acc,var(--ambar))}
+  padding:22px 26px;box-shadow:0 24px 55px rgba(18,54,42,.16),inset 5px 0 0 0 var(--acc,var(--ambar))}
+/* compactación de las tarjetas altas (Cap. I, II y III): mismo contenido, menos aire interno */
+#c-cap1 h3,#c-cap2 h3,#c-cap3 h3{margin:12px 0 6px}
+#c-cap1 .oe{margin:5px 0}
+#c-cap1 .quote{padding:10px 14px}
+#c-cap1 .stat{padding:8px 6px}
+#c-cap1 .capn{margin-top:7px}
+#c-cap2 .ant{gap:6px}
+#c-cap2 .ant p{padding:7px 10px;font-size:20px}
+#c-cap2 .chips{gap:6px}
+#c-cap2 .chips span{padding:7px 10px}
+#c-cap2 svg.spec{display:block;width:100%;height:auto}
+#c-cap3 p{margin-bottom:6px}
+#c-cap3 .unidad{margin:6px 0}
+#c-cap3 .quote{padding:10px 14px}
 .card.on{opacity:1;transform:none;pointer-events:auto;z-index:6;
   transition:opacity .8s cubic-bezier(.22,.7,.25,1),transform .8s cubic-bezier(.22,.7,.25,1)}
 .capI{--acc:var(--ocre)}.capII,.idx{--acc:var(--turq)}.capIII{--acc:var(--terra)}
@@ -338,19 +352,19 @@ body{background:var(--paper);color:var(--ink);font-family:var(--fb);overflow:hid
         <span><b>03</b>La respuesta espectral de la vegetación</span>
         <span><b>04</b>Las medidas de concordancia</span>
       </div>
-      <svg viewBox="0 0 880 210" style="width:100%;margin-top:12px" aria-hidden="true">
-        <line class="stick" x1="107" y1="26" x2="107" y2="186"/>
-        <line class="stick" x1="373" y1="26" x2="373" y2="186"/>
-        <line class="stick" x1="640" y1="26" x2="640" y2="186"/>
-        <line x1="40" y1="186" x2="840" y2="186" stroke="rgba(18,54,42,.4)" stroke-width="2"/>
-        <path id="specArea" d="M40,150C80,132 107,126 150,104C205,90 260,98 320,118C373,150 440,152 510,138C565,92 615,58 645,48C700,42 780,38 840,37L840,186L40,186Z" fill="rgba(46,158,91,.20)"/>
-        <path id="specCurve" d="M40,150C80,132 107,126 150,104C205,90 260,98 320,118C373,150 440,152 510,138C565,92 615,58 645,48C700,42 780,38 840,37" fill="none" stroke="#2E9E5B" stroke-width="4" stroke-linecap="round"/>
-        <text class="slabel ag" x="107" y="206" text-anchor="middle">AZUL</text>
-        <text class="slabel ter" x="373" y="206" text-anchor="middle">ROJO</text>
-        <text class="slabel amb" x="640" y="206" text-anchor="middle">NIR</text>
-        <text class="slabel ter" x="360" y="150" text-anchor="end">clorofila absorbe el rojo</text>
-        <text class="slabel" x="500" y="120">salto del borde rojo</text>
-        <text class="slabel amb" x="660" y="46">meseta NIR · estructura foliar</text>
+      <svg class="spec" viewBox="0 0 880 176" style="margin-top:8px" role="img" aria-label="Curva de respuesta espectral de la vegetación: absorción en el azul y el rojo, y meseta en el infrarrojo cercano">
+        <line class="stick" x1="107" y1="18" x2="107" y2="140"/>
+        <line class="stick" x1="373" y1="18" x2="373" y2="140"/>
+        <line class="stick" x1="640" y1="18" x2="640" y2="140"/>
+        <line x1="40" y1="140" x2="840" y2="140" stroke="rgba(18,54,42,.4)" stroke-width="2"/>
+        <path id="specArea" d="M40,114C80,101 107,97 150,81C205,71 260,77 320,91C373,114 440,116 510,105C565,72 615,48 645,41C700,36 780,33 840,33L840,140L40,140Z" fill="rgba(46,158,91,.20)"/>
+        <path id="specCurve" d="M40,114C80,101 107,97 150,81C205,71 260,77 320,91C373,114 440,116 510,105C565,72 615,48 645,41C700,36 780,33 840,33" fill="none" stroke="#2E9E5B" stroke-width="4" stroke-linecap="round"/>
+        <text class="slabel ag" x="107" y="164" text-anchor="middle">AZUL</text>
+        <text class="slabel ter" x="373" y="164" text-anchor="middle">ROJO</text>
+        <text class="slabel amb" x="640" y="164" text-anchor="middle">NIR</text>
+        <text class="slabel ter" x="360" y="112" text-anchor="end">clorofila absorbe el rojo</text>
+        <text class="slabel" x="492" y="88">salto del borde rojo</text>
+        <text class="slabel amb" x="868" y="24" text-anchor="end">meseta NIR · estructura foliar</text>
       </svg>
       <div class="foot" style="margin-top:6px"><span class="num" data-v="4">0</span><span class="lab">índices espectrales seleccionados · cuatro subestaciones aguas abajo → NDVI · SAVI · EVI · ARVI</span></div>
     </section>
@@ -548,7 +562,19 @@ function boxOf(st){
     x2=Math.max(x2,el.offsetLeft+el.offsetWidth);y2=Math.max(y2,el.offsetTop+el.offsetHeight);});
   if(st.box){x1=Math.min(x1,st.box[0]);y1=Math.min(y1,st.box[1]);x2=Math.max(x2,st.box[2]);y2=Math.max(y2,st.box[3]);}
   if(st.ring!=null){const p=RINGS[st.ring];x1=Math.min(x1,p.x-230);y1=Math.min(y1,p.y-230);x2=Math.max(x2,p.x+230);y2=Math.max(y2,p.y+230);}
-  return [x1-90,y1-90,x2+90,y2+90];
+  return [x1-64,y1-64,x2+64,y2+64];
+}
+/* área útil de pantalla: descuenta la barra inferior de navegación y el minimapa,
+   para que la tarjeta activa se vea COMPLETA, sin quedar detrás de ningún HUD */
+function safeInsets(){
+  if(vw<=760) return {l:10,r:78,t:10,b:106};
+  return {l:20,r:176,t:16,b:134};
+}
+function fitCam(x1,y1,x2,y2){
+  const ins=safeInsets();
+  const uw=Math.max(200,vw-ins.l-ins.r), uh=Math.max(200,vh-ins.t-ins.b);
+  const s=clamp(Math.min(uw/(x2-x1),uh/(y2-y1)),.10,1.6);
+  return {s,tx:(ins.l+uw/2)-((x1+x2)/2)*s,ty:(ins.t+uh/2)-((y1+y2)/2)*s};
 }
 const CENTERS=S.map(st=>{const b=boxOf(st);return [(b[0]+b[2])/2,(b[1]+b[3])/2];});
 
@@ -631,8 +657,7 @@ function goTo(i,instant=false){
   mmMk.style.transform=`translate(${CENTERS[i][0]}px,${CENTERS[i][1]}px)`;
   prfill.style.strokeDashoffset=(PRL*(1-i/(NST-1))).toFixed(1);
   const [x1,y1,x2,y2]=boxOf(st);
-  const s=clamp(Math.min(vw/(x2-x1),vh/(y2-y1)),.16,1.6);
-  animateCam({s,tx:vw/2-((x1+x2)/2)*s,ty:vh/2-((y1+y2)/2)*s},instant?0:TRANS);
+  animateCam(fitCam(x1,y1,x2,y2),instant?0:TRANS);
   if(transiting)tTrans=setTimeout(()=>transiting=false,TRANS+150);
   setTrail(st.river,!instant);
   document.querySelectorAll('.card.on,.ov.on').forEach(el=>el.classList.remove('on'));
@@ -676,9 +701,8 @@ addEventListener('resize',()=>{vw=innerWidth;vh=innerHeight;if(cur>=0)goTo(cur,t
 
 /* arranque: vuelo de apertura + el río se dibuja de las cabeceras a Guri */
 (function init(){
-  const [x1,y1,x2,y2]=boxOf(S[0]);
-  const s=clamp(Math.min(vw/(x2-x1),vh/(y2-y1)),.16,1.6);
-  const target={s,tx:vw/2-((x1+x2)/2)*s,ty:vh/2-((y1+y2)/2)*s};
+  const b0=boxOf(S[0]);
+  const target=fitCam(b0[0],b0[1],b0[2],b0[3]);
   goTo(0,true);
   if(!RM){
     /* arranca cerca de las cabeceras (sur) y vuela hasta la vista general */
